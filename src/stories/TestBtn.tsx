@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface ButtonProps {
+interface Props {
   /**
    * Is this the principal call to action on the page?
    */
@@ -24,11 +24,13 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
+type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & Props;
+
 /**
  * Primary UI component for user interaction
  */
 export const Button = ({
-  primary = false,
+  primary = true,
   size = "medium",
   backgroundColor,
   label,
@@ -43,7 +45,6 @@ export const Button = ({
       className={["storybook-button", `storybook-button--${size}`, mode].join(
         " "
       )}
-      // style={{ backgroundColor }}
       {...props}
       BtnProps={{ mode, size, backgroundColor }}
     >
